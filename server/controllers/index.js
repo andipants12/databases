@@ -1,22 +1,32 @@
 var models = require('../models');
 var express = require('express');
-var app = express();
+//do we need to require parser here?
+
+/*
+bodyparser methods
+.text --> parses bodies to strings
+req.body --> new body containing parsed data populated on the request object
+
+*/
+//this is the data we will be posting
+    // var message = {
+    //   username: app.username,
+    //   text: app.$message.val(),
+    //   roomname: app.roomname || 'lobby'
+    // };
 
 module.exports = {
   messages: {
     //will handle requests and signal changes to the model
     get: function (req, res) {
-      //response write head with status codes and messages
-      //response.end --> what to do when the response is finished, in this case, we need to connect with the data base
+      res.send('meow meow meow');
+
     }, // a function which handles a get request for all messages
 
     post: function (req, res) {
-      //.on('data') and .on('end')
-
-      //collect the data in stringified form from client
-      //create an object id and time stamp for the message
-      //interact with database to add the message (add it to the messages table) [I think this will be a call to the model]
-      //send response, including the end method which will parse the data
+      //we don't need to manually create the object ID since our database will increment for us
+      //call models.post with the stringified message
+      res.end(models.post(JSON.stringify(message)));
     } // a function which handles posting a message to the database
   },
 
