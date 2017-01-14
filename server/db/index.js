@@ -19,3 +19,15 @@ dbConnection.connect(function(err) {
   //otherwise, tell us that we have connected!
   console.log('you are now connected!');
 });
+
+   
+// dbConnection.query('select * from user', function(err, results, fields) {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log(results);
+//   }
+// });
+
+
+module.exports = dbConnection;

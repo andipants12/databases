@@ -31,9 +31,17 @@ CREATE TABLE if not exists messages (
   foreign key (room_id) references rooms(id)
 );
 
-describe rooms;
-describe user;
-describe messages;
+-- describe rooms;
+-- describe user;
+-- describe messages;
+-- INSERT INTO user VALUES (1, 'wowimaui');
+-- INSERT INTO rooms VALUES (1, 'lobby');
+-- INSERT INTO messages VALUES (1, 1, 1, 'Hey! we made it');
+-- select * from user;
+-- select * from rooms;
+-- select * from messages;
+
+-- INSERT INTO rooms VALUES (1, 
 
 /* Create other tables and define schemas for them here! */
 
