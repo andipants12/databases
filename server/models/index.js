@@ -4,33 +4,60 @@ var db = require('../db');
 module.exports = {
   messages: {
     //this will modify the data in the data base
-    get: function () {
-      //querries
-      console.log("hey!!!!!!!!!");
-
-
-      db.query('select * from user', function(err, results, fields) {
+   get: function (req, res) {
+      console.log("inside get of models messages");
+      var q = 'SELECT * FROM messages';
+      db.query(q, function (err) {
         if (err) {
           console.log(err);
-        } else {
-          console.log("-----------------------");
-
-          console.log(JSON.stringify(results));
         }
+    
+        res.end(JSON.stringify());
       });
-      // var q = db.connect.query('select * from user;');
-      // console.log("query: ",q);
-    }, // a function which produces all the messages
-    post: function (data) {
-      console.log("data inside post: ",data);
-      
-    } // a function which can be used to insert a message into the database
+    }, 
+
+    post: function (req, res) { 
+      console.log("inside models users post"); 
+      var q = 'INSERT INTO messages SET ?';
+      var args = req.body;
+      console.log("arguments:------------------------------------------- ",args);
+      db.query(q, args, function(err) {
+        if (err) {
+          console.log(err);
+        }
+        res.end();
+      });
+    }
   },
 
   users: {
-    // Ditto as above.
-    get: function () {},
-    post: function () {}
-  }
-};
 
+     get: function (req, res) {
+      console.log("inside get of models users");
+      var q = 'SELECT * FROM users';
+      db.query(q, function (err) {
+        if (err) {
+          console.log(err);
+        }
+       
+        
+        res.end(JSON.stringify());
+      });
+    }, 
+
+    post: function (req, res) { 
+      console.log("inside models users post"); 
+      var q = 'INSERT INTO users SET ?';
+      var args = req.body;
+      console.log("arguments: ",args);
+      db.query(q, args, function(err) {
+        if (err) {
+          console.log(err);
+        }
+        res.end();
+      });
+    }
+
+  }
+
+};
